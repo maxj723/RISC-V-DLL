@@ -68,11 +68,6 @@ sw x19, 0(x28)   	# made_node->the_int = y;
 sw x28, 0(x18)		# the_list->head_node = made_node;
 sw x28, 4(x18)		# the_list->tail_node = made_node;
 
-###########################################
-#### THE CHANGE FOR THE LOOP ENDS HERE ####
-#### Check the return 0 comment as well####
-###########################################
-
 # 7.3 - Clear local registers and branch to END_IF
 add x28, x0, x0  # x28 goes out of scope before ELSE_IF
 
