@@ -88,7 +88,7 @@ sw x19, 0(x28)   	# made_node->the_int = y;
 sw x28, 0(x18)		# the_list->head_node = made_node;
 sw x28, 4(x18)		# the_list->tail_node = made_node;
 
-# 7.3 - Clear local registersand branch to END_IF
+# 7.3 - Clear local registers and branch to END_IF
 add x28, x0, x0  # x28 goes out of scope before ELSE_IF
 
 beq x0, x0, END_IF
@@ -102,7 +102,7 @@ lw x28, 0(x18)	# dll_node* curr_ptr = the_list->head_node;
 # 8.2 - Develop the while loop
 WHILE:
 
-lw x29, 4(x28)			# x29 = curr_ptr->next_node
+lw x29, 8(x28)			# x29 = curr_ptr->next_node
 beq x29, x0, END_WHILE	# Exit the while loop if curr_ptr->next_node == NULL
 
 # 8.3 - These two instructions make up:
@@ -127,6 +127,8 @@ sw x19, 0(x29)
 
 # 9.3 - curr_ptr->next_node = made_node;
 sw x29, 8(x28)
+sw x28, 4(x29) #set prev node
+sw x29, 4(x18) # set tail
 
 
 # 7.4 - Clear x7, increment ++x, and branch back to BEGIN_FOR
