@@ -155,7 +155,7 @@ lw x29, 8(x28) #next
 
 # 10.2-1 - Set up the FREE_NODE_LOOP
 WHILE_FREE:
-beq x29, x0, END_WHILE_FREE
+beq x28, x0, END_WHILE_FREE
 
 
 # 10.3 - Free the current pointer - free(curr_ptr)
@@ -174,11 +174,8 @@ lw x29, 8(x28) #next
 beq x0, x0, WHILE_FREE
 
 END_WHILE_FREE:
-add x12, x28, x0
-jal x1, FREE_DLLIST
-add x1, x0, x0
-add x12, x0, x0
 add x28, x0, x0
+add x29, x0, x0
 
 # Step 4 - Free the dllist struct main call
 add x12, x18, x0    # Pointer to the_list is copied to x12
